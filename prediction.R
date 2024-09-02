@@ -1,14 +1,27 @@
 library(jsonlite)
 
-modelo = readRDS("local_de_salvamento/modelo.rds")
+modelo = readRDS("saidas/modelo.rds")
+novos_dados = config$predicao
 
-novos_dados = fromJSON("local_de_entrada/novos_dados.json")
+# Inicializa um vetor vazio para armazenar as previsões
+preds = c()
 
-if (config$model_type == 'lm') {
-  preds = predict(modelo, newdata = novos_dados)
-} else if (config$model_type == 'lasso') {
-  X_new = as.matrix(novos_dados)
-  preds = predict(modelo, newx = X_new)
+# Loop para prever cada valor na lista
+for (dados in novos_dados) {
+  if (config$tipo_modelo == 'lm') {
+    # Previsão para o modelo linear
+    previsao = predict(modelo, newdata = data.frame(config$predicao = dados))  # Substitua 'x' pelo nome da variável usada no seu modelo
+  } else if (config$tipo_modelo == 'lasso') {
+    # Previsão para o modelo Lasso
+    X_new = as.matrix(data.frame(config$predicao = dados))  # Substitua 'x' pelo nome da variável usada no seu modelo
+    previsao = predict(modelo, newx = X_new)
+  }
+  
+  # Armazena a previsão
+  preds = c(preds, previsao)
 }
+
+# Exibe as previsões
+print(preds)
 
 write_json(preds, "saidas/predicoes.json")
