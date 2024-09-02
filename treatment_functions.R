@@ -15,7 +15,7 @@ criar_yaml = function() {
 
   yaml_string = as.yaml(dados)
 
-  write(yaml_string, file = "meu_arquivo.yaml")
+  write(yaml_string, file = "entradas/meu_arquivo.yaml")
 }
 
 
