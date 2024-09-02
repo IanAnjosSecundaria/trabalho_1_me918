@@ -1,9 +1,10 @@
-#install.packages("yaml") primeira vez ao executar o código
+#install.packages("yaml") primeira vez ao executar o código para preparar o ambiente
+
 library(yaml)
 
 # Funções de tratamento
-criar_yaml <- function() {
-  dados <- list(
+criar_yaml = function() {
+  dados = list(
     bd = "valor1",
     x = "valor3",
     y = "valor5",
