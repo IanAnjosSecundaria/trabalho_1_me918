@@ -75,6 +75,3 @@ conferir_requisicao = function(pasta_input, arquivo_yaml) {
 	  return(TRUE)
 }
 
-# Exemplo de chamada da função
-conferir_requisicao("caminho_para_input", "meu_arquivo.yaml")
-
