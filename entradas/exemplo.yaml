@@ -1,0 +1,7 @@
+bd: entradas/Diabetes.csv
+var_preditoras: glufast
+var_respostas: glutest
+tipo_modelo: lm
+lambda: 0.01
+plot: 0.0
+

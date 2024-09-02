@@ -30,11 +30,27 @@ Pastas de iterações:
 
 Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as colunas; No arquivo usuario.yaml, é precisso colocar uma série de parâmetros para o funcionamento do programa a depender do modelo selecionado:
 
-### **Para regressão logistica:**
+### **Para regressão linear:**
 
 - tipo_modelo: *lm*;
 - bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
 - var_preditoras: 'O nome de uma ou mais colunas preditoras, é uma lista';
 - var_respostas: 'O nome de uma coluna resposta, é uma string';
-- plot: '0 ou 1, caso queira o plot é 1, por padrão é 0'
+- plot: '0 ou 1, caso queira o plot é 1, por padrão é 0'.
+
+### **Para regressão lasso:**
+
+- tipo_modelo: *lasso*;
+- bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
+- var_preditoras: 'O nome de uma ou mais colunas preditoras, é uma lista';
+- var_respostas: 'O nome de uma coluna resposta, é uma string';
+- plot: '0 ou 1, caso queira o plot é 1, por padrão é 0';
+- lambda: 'Parâmetro lâmbida do *lasso*.
+
+### **Para previsão:**
+
+- tipo_modelo: *lm* ou *lasso*
+- bs: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
+- dados_predicao: "Lista de listas com variáveis preditoras afim de receber o Y do modelo".
+
 
