@@ -1,7 +1,7 @@
 # Configuração de imagem
 # Caso o usuário já tenha no seu diretório a imagem de configuração, então basta pegar essas configurações da imagem.
 
-inicializar_configuracoes_programa() = function() {
+inicializar_configuracoes_programa = function() {
 	if (!dir.exists("renv")) {
 	  install.packages("renv")
 	  renv::init()
