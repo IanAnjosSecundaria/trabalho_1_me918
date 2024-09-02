@@ -1,10 +1,12 @@
-library(yaml) #Jogar no renv para instalar os pacotes
-library(glmnet) #Jogar no renv para instalar os pacotes
+#Bibliotecas:
+library(yaml)
+library(glmnet)
 
+#Lógica:
 config = yaml::read_yaml("entradas//meu_arquivo.yaml")
 
 #dados jC! estC#o no dir
-dados =read.csv(config$bd)
+dados = read.csv(config$bd)
 
 X = as.matrix(dados[, config$var_preditoras])
 y = dados[[config$var_resposta]]
@@ -12,7 +14,7 @@ y = dados[[config$var_resposta]]
 
 modelo_funcao = function(x, y, dados){
   regressao = paste0(y, "~", x)
-ajuste <- lm(as.formula(regressao), data = dados)
+ajuste = lm(as.formula(regressao), data = dados)
 return(list(beta0 = ajuste$coef[1], beta1 = ajuste$coef[2]))
 }
 

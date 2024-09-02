@@ -4,6 +4,7 @@ install.packages("renv")
 renv::init()
 renv::install(yaml)
 renv::install(glue)
+renv::install(glmnet)
 renv::snapshot()
 
 # Para restabelecer bibliotecas:
