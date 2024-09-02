@@ -1,6 +1,6 @@
 """modelo."""
-library(yaml)
-library(glmnet)
+library(yaml) #Jogar no renv para instalar os pacotes
+library(glmnet) #Jogar no renv para instalar os pacotes
 
 config = yaml::read_yaml("arq_de_config.yaml")
 
