@@ -6,7 +6,7 @@
 
 # Bibliotecas autorais
 source("model.R")
-source("functions_treatment.R")
+source("treatment_functions.R")
 
 # Bibliotecas não autorais
 
