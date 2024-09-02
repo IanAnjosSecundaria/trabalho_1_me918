@@ -19,3 +19,7 @@ Arquivos de função/suporte:
 Pastas de iterações:
 - entrada;
 - saida.
+
+## Como o usuário deve iteragir com o programa:
+
+
