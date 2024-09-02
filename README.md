@@ -1,59 +1,64 @@
 # trabalho_1_me918
 
-## Como usar
+## Istruções de Uso
 
 [tutorial uso]
 
-## Da organização do repositório
+## Organização do Repositório
 
-Esse repositório está organizado em:
+Este repositório está organizado da seguinte forma:
 
-Arquivos de aplicação:
-- model.R;
-- plot.R;
-- prediction.R;
-- treatment.R;
-- config.R.
+Arquivos de Aplicação:
+- ```model.R```;
+- ```plot.R```;
+- ```prediction.R```;
+- ```treatment.R```;
+- ```config.R```.
 
-Arquivos de função/suporte:
-- functions_treatment.R.
+Arquivos de Função/Suporte:
+- ```functions_treatment.R```.
 
-Pastas de iterações:
+Pastas de Iterações:
 - entrada;
 - saida.
 
-## Variáveis dentro do yaml:
+## Variáveis no Arquivo YAML
 
-- tipo_modelo: string que indica o modelo escolhido, podem ser dois, ou o *lm* ou o *lasso*;
-- bd: string com o nome do ".csv", o arquivo ".csv" deve estar na pasta "entrada", caso ela esteja na pasta principal, ao iniciar, o código pega todos os ".csv" e joga na pasta "entrada";
-- var_preditora: É uma lista de strings onde cada item dentro da lista é o nome de uma coluna que será usado como variável preditora;
-- var_resposta: É uma string que indica o nome da coluna da variável resposta;
-- lambda: É um float, que em determinados modelos é usado como parâmetro, por exemplo, no lasso esse parâmetro é usado;
+As variáveis no arquivo YAML incluem:
 
-## Como o usuário deve iteragir com o programa
+- **tipo_modelo**: String que indica o modelo escolhido, podendo ser *lm* ou *lasso*.
+- **bd**: String contendo o nome do arquivo *.csv*. Este arquivo deve estar na pasta *entrada*. Caso esteja na pasta principal, o código moverá automaticamente todos os arquivos *.csv* para a pasta *entrada* ao iniciar;
+- **var_preditora**: Lista de strings, onde cada item representa o nome de uma coluna que será utilizada como variável preditora;
+- **var_resposta**: String que indica o nome da coluna que contém a variável resposta;
+- **lambda**: Valor numérico (float) utilizado como parâmetro em determinados modelos, como no lasso.
 
-Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as colunas; No arquivo usuario.yaml, é precisso colocar uma série de parâmetros para o funcionamento do programa a depender do modelo selecionado:
+## Interação do Usuário com o Programa
+
+O usuário deve seguir estas instruções para interagir com o programa:
+
+1. Na pasta *entrada*, coloque o arquivo *.csv* contendo os dados. A primeira linha do arquivo deve conter os nomes das colunas.
+2. No arquivo *usuario.yaml*, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
 
 ### **Para regressão linear**
 
-- tipo_modelo: *lm*;
-- bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
-- var_preditoras: 'O nome de uma ou mais colunas preditoras, é uma lista';
-- var_respostas: 'O nome de uma coluna resposta, é uma string';
-- plot: '0 ou 1, caso queira o plot é 1, por padrão é 0'.
+- **tipo_modelo**: *lm*;
+- **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
+- **var_preditoras**: Nome de uma ou mais colunas preditoras, representadas como uma lista;
+- **var_respostas**: Nome da coluna que contém a variável resposta, representado como uma string;
+- **plot**: 0 ou 1. Defina como 1 para gerar um gráfico.
 
 ### **Para regressão lasso**
 
-- tipo_modelo: *lasso*;
-- bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
-- var_preditoras: 'O nome de uma ou mais colunas preditoras, é uma lista';
-- var_respostas: 'O nome de uma coluna resposta, é uma string';
-- plot: '0 ou 1, caso queira o plot é 1, por padrão é 0';
-- lambda: 'Parâmetro lâmbida do *lasso*.
+- **tipo_modelo**: *lasso*;
+- **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
+- **var_preditoras**: Nome de uma ou mais colunas preditoras, representadas como uma lista;
+- **var_respostas**: Nome da coluna que contém a variável resposta, representado como uma string;
+- **plot**: 0 ou 1. Defina como 1 para gerar um gráfico;
+- **lambda**: Parâmetro lambda utilizado no modelo *lasso*.
 
-### **Para previsão**
+### **Parâmetros para Previsão**
 
-- tipo_modelo: *lm* ou *lasso*
-- bs: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
-- dados_predicao: "Lista de listas com variáveis preditoras afim de receber o Y do modelo".
+- **tipo_modelo**: *lasso*;
+- **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
+- **dados_predicao**: Lista de listas contendo as variáveis preditoras para gerar as previsões do modelo.
 
