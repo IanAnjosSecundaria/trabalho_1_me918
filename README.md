@@ -2,7 +2,7 @@
 
 ## Istruções de Uso
 
-[tutorial uso]
+Execute o código ```main.R```.
 
 ## Organização do Repositório
 
