@@ -1,7 +1,7 @@
-bd: banco de dados
-var_preditoras: x
-var_respostas: 'y'
-tipo_modelo: modelo
+bd: entradas/Diabetes.csv
+var_preditoras: glufast
+var_respostas: glutest
+tipo_modelo: lm
 lambda: 0.01
 plot: 0.0
 

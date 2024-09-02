@@ -2,6 +2,16 @@
 
 library(yaml)
 
+#Função para criar pastas
+criar_pasta <- function(pasta) {
+  if (!dir.exists(pasta)) {
+    dir.create(pasta)
+    message(paste("Pasta", pasta, "criada."))
+  } else {
+    message(paste("Pasta", pasta, "já existe."))
+  }
+}
+
 # Funções de tratamento
 criar_yaml = function() {
   dados = list(
