@@ -8,6 +8,7 @@ criar_yaml = function() {
     bd = "banco de dados", #string
     var_preditoras = "x", #string
     var_respostas = "y", #string
+    dados_predicao = (4, 19), #lista de listas
     tipo_modelo = "modelo", #string
     lambda = 0.01, #float
     plot = 0

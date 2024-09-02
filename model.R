@@ -1,23 +1,29 @@
-
 library(yaml) #Jogar no renv para instalar os pacotes
 library(glmnet) #Jogar no renv para instalar os pacotes
 
-config = yaml::read_yaml("arq_de_config.yaml")
+config = yaml::read_yaml("entradas//meu_arquivo.yaml")
 
-#dados já estão no dir
-dados =read.csv(config$nomde_dos_dados)
+#dados jC! estC#o no dir
+dados =read.csv(config$bd)
 
 X = as.matrix(dados[, config$var_preditoras])
 y = dados[[config$var_resposta]]
 
-if (config$tipo_de_modelo == 'lm') {
-  modelo = lm(as.formula(paste(config$var_resposta, "~",
-               paste(var_preditoras, collapse = "+"))), data = dados)
-} else if (config$tipo_de_modelo == 'lasso') {
+
+modelo_funcao = function(x, y, dados){
+  regressao = paste0(y, "~", x)
+ajuste <- lm(as.formula(regressao), data = dados)
+return(list(beta0 = ajuste$coef[1], beta1 = ajuste$coef[2]))
+}
+
+if (config$tipo_modelo == 'lm') {
+  modelo = modelo_funcao(config$var_preditoras, config$var_respostas, dados)
+} else if (config$tipo_modelo == 'lasso')
+  {
   modelo = glmnet(X, y, alpha = config$lasso_params$alpha,
                    lambda = config$lasso_params$lambda)
 #podemos adicionar ifelse para mais modelos
 }
 
 #precisamos adicionar o caminho
-saveRDS(modelo, "local_de_salvamento/modelo.rds")
+saveRDS(modelo, "saidas/modelo.rds")
