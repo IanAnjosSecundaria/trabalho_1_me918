@@ -1,5 +1,4 @@
 # Configurações de código
-
 tratamento = "treatment.R"
 funcoes_tratamento = "treatment_functions.R"
 modelos = "model.R"

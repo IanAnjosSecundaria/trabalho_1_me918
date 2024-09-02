@@ -3,7 +3,7 @@
 
 # Bibliotecas autorais
 source("model.R")
-source("treatment_functions.R")
+source(funcoes_tratamento)
 
 # Lógica:
 pastas <- c("entradas", "saidas")
