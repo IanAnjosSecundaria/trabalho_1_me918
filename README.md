@@ -57,4 +57,3 @@ Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as coluna
 - bs: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
 - dados_predicao: "Lista de listas com variáveis preditoras afim de receber o Y do modelo".
 
-
