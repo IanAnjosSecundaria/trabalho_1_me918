@@ -1,5 +1,9 @@
 # trabalho_1_me918
 
+## Como usar
+
+[tutorial uso]
+
 ## Da organização do repositório
 
 Esse repositório está organizado em:
@@ -26,11 +30,11 @@ Pastas de iterações:
 - var_resposta: É uma string que indica o nome da coluna da variável resposta;
 - lambda: É um float, que em determinados modelos é usado como parâmetro, por exemplo, no lasso esse parâmetro é usado;
 
-## Como o usuário deve iteragir com o programa:
+## Como o usuário deve iteragir com o programa
 
 Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as colunas; No arquivo usuario.yaml, é precisso colocar uma série de parâmetros para o funcionamento do programa a depender do modelo selecionado:
 
-### **Para regressão linear:**
+### **Para regressão linear**
 
 - tipo_modelo: *lm*;
 - bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
@@ -38,7 +42,7 @@ Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as coluna
 - var_respostas: 'O nome de uma coluna resposta, é uma string';
 - plot: '0 ou 1, caso queira o plot é 1, por padrão é 0'.
 
-### **Para regressão lasso:**
+### **Para regressão lasso**
 
 - tipo_modelo: *lasso*;
 - bd: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
@@ -47,7 +51,7 @@ Na pasta, entradas deixe o arquivo .csv onde a primeira linha deve ser as coluna
 - plot: '0 ou 1, caso queira o plot é 1, por padrão é 0';
 - lambda: 'Parâmetro lâmbida do *lasso*.
 
-### **Para previsão:**
+### **Para previsão**
 
 - tipo_modelo: *lm* ou *lasso*
 - bs: "Nome do '.csv' que será usado, esse '.csv' tem que estar na pasta entradas";
