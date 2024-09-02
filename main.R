@@ -8,11 +8,11 @@ source(predicao)
 source(plot)
 
 
-
 # Tratamento principal:
 inicializar_configuracoes_programa()
 criar_pasta()
 criar_yaml()
+
 
 # Após o usuário modificar o yaml:
 if(conferir_requisicao(pasta_input, arquivo_yaml))
