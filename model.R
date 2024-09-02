@@ -1,4 +1,4 @@
-"""modelo."""
+
 library(yaml) #Jogar no renv para instalar os pacotes
 library(glmnet) #Jogar no renv para instalar os pacotes
 
