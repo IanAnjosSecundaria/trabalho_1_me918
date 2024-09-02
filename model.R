@@ -6,11 +6,10 @@ library(glmnet)
 source("config.R")
 source(modelos)
 
+# Uma vez tendo o yaml definido, treina o modelo
 chamar_modelo = function() {
-	# Lógica:
 	config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
 
-	# Carregar os dados
 	dados = read.csv(config$bd)
 
 	X = as.matrix(dados[, config$var_preditoras])
@@ -35,8 +34,8 @@ chamar_modelo = function() {
 	return(modelo)
 }
 
-salvar_modelo = function(modelo) {
-  # Salvar o modelo
+# Salvar o modelo
+salvar_modelo = function(modelo) { 
   nome_modelo = paste0(pasta_output, "/modelo_",gsub(".yaml", "", arquivo_yaml), "_", modelo_usado,".rds")
   saveRDS(modelo, nome_modelo)
   print(paste0("Modelo salvo em ", pasta_output, " com o nome '", nome_modelo, "'"))

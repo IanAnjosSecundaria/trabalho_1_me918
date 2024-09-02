@@ -14,4 +14,3 @@ inicializar_configuracoes_programa = function() {
 	 renv::restore()
 	}
 }
-
