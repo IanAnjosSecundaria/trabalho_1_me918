@@ -1,6 +1,7 @@
 # Código principal com a lógica principal de requisição
 source("config.R")
 source(virtualizacao)
+inicializar_configuracoes_programa()
 source(tratamento)
 source(funcoes_tratamento)
 source(modelos)
@@ -9,7 +10,6 @@ source(plot)
 
 
 # Tratamento principal:
-inicializar_configuracoes_programa()
 criar_pasta()
 criar_yaml()
 
