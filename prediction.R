@@ -1,27 +1,29 @@
 library(jsonlite)
 
+# Carrega o modelo salvo
 modelo = readRDS("saidas/modelo.rds")
 novos_dados = config$predicao
 
-# Inicializa um vetor vazio para armazenar as previsões
+# Inicializa um vetor para armazenar as previsões
 preds = c()
 
-# Loop para prever cada valor na lista
-for (dados in novos_dados) {
-  if (config$tipo_modelo == 'lm') {
-    # Previsão para o modelo linear
-    previsao = predict(modelo, newdata = data.frame(config$predicao = dados))  # Substitua 'x' pelo nome da variável usada no seu modelo
-  } else if (config$tipo_modelo == 'lasso') {
-    # Previsão para o modelo Lasso
-    X_new = as.matrix(data.frame(config$predicao = dados))  # Substitua 'x' pelo nome da variável usada no seu modelo
-    previsao = predict(modelo, newx = X_new)
-  }
+if (config$tipo_modelo == 'lm') {
+  # Extrai os coeficientes do modelo (assumindo que estão armazenados em uma lista)
+  betas = unlist(modelo)
   
-  # Armazena a previsão
-  preds = c(preds, previsao)
+  # Converte a lista de novos_dados em uma matriz
+  X_new = t(do.call(rbind, lapply(novos_dados, as.numeric)))
+  
+  # Adiciona uma coluna de 1's para o intercepto
+  X_new = cbind(1, X_new)
+  # Calcula as previsões multiplicando a matriz de preditores por beta
+  preds = X_new %*% betas
+  
+} else if (config$tipo_modelo == 'lasso') {
+  # Converte a lista de novos_dados em uma matriz para o Lasso
+  X_new = do.call(rbind, lapply(novos_dados, as.numeric))
+  preds = predict(modelo, newx = X_new)
 }
 
-# Exibe as previsões
-print(preds)
-
-write_json(preds, "saidas/predicoes.json")
+# Salva as previsões em um arquivo JSON
+write_json(as.numeric(preds), "saidas/predicoes.json")
