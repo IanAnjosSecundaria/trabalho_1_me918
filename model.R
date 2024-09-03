@@ -7,7 +7,6 @@ source("config.R")
 
 # Uma vez tendo o yaml definido, treina o modelo
 chamar_modelo = function() {
-  config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
   
   dados = read.csv(config$bd)
   
@@ -36,13 +35,22 @@ chamar_modelo = function() {
     modelo = glmnet(X, y, alpha = config$lasso_params$alpha,
                     lambda = config$lasso_params$lambda)
   } else {
-    stop(paste("Modelo", config$tipo_modelo, "não é reconhecido. Use 'lm' ou 'lasso'."))
+    stop(paste("Modelo", modelo_usado, "não é reconhecido. Use 'lm' ou 'lasso'."))
   }
-return(modelo)
+  
+  # Retornar uma lista com o modelo e o tipo de modelo
+  return(list(modelo = modelo, tipo = modelo_usado))
 }
-# Salvar o modelo
-salvar_modelo = function(modelo) { 
-	nome_modelo = paste0(pasta_output, "/modelo_",gsub(".yaml", "", arquivo_yaml), "_", modelo_usado,".rds")
-	saveRDS(modelo, nome_modelo)
-	print(paste0("Modelo salvo em ", pasta_output, " com o nome '", nome_modelo, "'"))
+
+# Função para salvar o modelo
+salvar_modelo = function(modelo_obj) { 
+  # Gerar o nome do arquivo baseado no tipo de modelo
+  nome_modelo = paste0(pasta_output, "/modelo_", config$tipo_modelo, ".rds")
+  
+  # Salvar o modelo em um arquivo .rds
+  saveRDS(modelo_obj, nome_modelo)
+  
+  # Imprimir mensagem de confirmação
+  print(paste0("Modelo salvo em ", nome_modelo))
 }
+
