@@ -33,13 +33,13 @@ As variáveis no arquivo YAML incluem:
 - **bd**: String contendo o nome do arquivo *.csv*. Este arquivo deve estar na pasta *entrada*. Caso esteja na pasta principal, o código moverá automaticamente todos os arquivos *.csv* para a pasta *entrada* ao iniciar;
 - **var_preditora**: Lista de strings, onde cada item representa o nome de uma coluna que será utilizada como variável preditora;
 - **var_resposta**: String que indica o nome da coluna que contém a variável resposta;
-- **lambda**: Valor numérico (float) utilizado como parâmetro em determinados modelos, como no lasso.
-- **dados_predicao** : Valor/lista de valores numéricos( float) que serão utilizados para fazer a predição
+- **lambda**: Valor numérico (float) utilizado como parâmetro em determinados modelos, como no lasso;
+- **dados_predicao** : Valor/lista de valores numéricos( float) que serão utilizados para fazer a predição.
 ## Interação do Usuário com o Programa
 
 O usuário deve seguir estas instruções para interagir com o programa:
 
-1. Na pasta *entrada*, coloque o arquivo *.csv* contendo os dados. A primeira linha do arquivo deve conter os nomes das colunas.
+1. Na pasta *entrada*, coloque o arquivo *.csv* contendo os dados. A primeira linha do arquivo deve conter os nomes das colunas;
 2. No arquivo *usuario.YAML*, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
 
 ### **Para regressão linear**
