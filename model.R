@@ -36,8 +36,8 @@ chamar_modelo = function() {
 
 # Salvar o modelo
 salvar_modelo = function(modelo) { 
-  nome_modelo = paste0(pasta_output, "/modelo_",gsub(".yaml", "", arquivo_yaml), "_", modelo_usado,".rds")
-  saveRDS(modelo, nome_modelo)
-  print(paste0("Modelo salvo em ", pasta_output, " com o nome '", nome_modelo, "'"))
+	nome_modelo = paste0(pasta_output, "/modelo_",gsub(".yaml", "", arquivo_yaml), "_", modelo_usado,".rds")
+	saveRDS(modelo, nome_modelo)
+	print(paste0("Modelo salvo em ", pasta_output, " com o nome '", nome_modelo, "'"))
 }
 
