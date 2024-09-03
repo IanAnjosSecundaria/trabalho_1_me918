@@ -8,6 +8,9 @@ Execute o código ```main.R```.
 
 Este repositório está organizado da seguinte forma:
 
+Arquivo principal:
+- ```main.R```.
+
 Arquivos de Aplicação:
 - ```model.R```;
 - ```plot.R```;
@@ -37,7 +40,7 @@ As variáveis no arquivo YAML incluem:
 O usuário deve seguir estas instruções para interagir com o programa:
 
 1. Na pasta *entrada*, coloque o arquivo *.csv* contendo os dados. A primeira linha do arquivo deve conter os nomes das colunas.
-2. No arquivo *usuario.yaml*, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
+2. No arquivo *usuario.YAML*, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
 
 ### **Para regressão linear**
 
@@ -64,19 +67,33 @@ O usuário deve seguir estas instruções para interagir com o programa:
 
 ## Descrição dos códigos
 
-### ```model.R```
+### ```main.R```
 
-
-### ```plot.R```
-
-
-### ```prediction.R```
-
-
-### ```treatment.R```
-
+Este é o arquivo principal, responsável pela operação do conjunto de códigos. O usuário deve executá-lo após especificar sua requisição no arquivo *.YAML*.
 
 ### ```config.R```
 
+Código é responsável pela definição dos nomes de arquivos e pastas utilizados ao longo da execução do programa.
 
-### ```functions_treatment.R```
+### ```treatment.R``` e ```functions_treatment.R```
+
+Esta seção do código é responsável pelo tratamento do arquivo de entrada *.YAML* fornecido pelo usuário, bem como pela execução das solicitações de treinamento ou predição do modelo.
+A seguir estão algumas das funções presentes no código:
+
+- **criar_pasta**: Função que cria as pastas necessárias para o processo de treinamento, predição e requisição do usuário;
+- **criar_YAML**: Função que gera o arquivo YAML que será utilizado pelo usuário para fazer a requisição;
+- **conferir_requisicao**: Função que verifica se a requisição do usuário está corretamente formatada e se é possível prosseguir com as chamadas das funções subsequentes.
+
+### ```model.R```
+
+Parte do código responsável pelo treino de modelos.
+A seguir estão algumas das funções presentes no código:
+
+- **chamar_modelo**: Função que invoca o modelo e retorna o objeto do modelo ajustado;
+- **salvar_modelo**: Função que salva o modelo ajustado com o nome especificado pelo usuário.
+
+### ```prediction.R```
+
+### ```plot.R```
+
+Parte do código responsável pelo treino de modelos.
