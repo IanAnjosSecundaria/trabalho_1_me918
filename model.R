@@ -37,8 +37,9 @@ chamar_modelo = function() {
                     lambda = config$lasso_params$lambda)
   } else {
     stop(paste("Modelo", config$tipo_modelo, "não é reconhecido. Use 'lm' ou 'lasso'."))
-  }}
+  }
 return(modelo)
+}
 # Salvar o modelo
 salvar_modelo = function(modelo) { 
 	nome_modelo = paste0(pasta_output, "/modelo_",gsub(".yaml", "", arquivo_yaml), "_", modelo_usado,".rds")

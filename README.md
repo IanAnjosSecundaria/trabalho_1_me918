@@ -62,3 +62,21 @@ O usuário deve seguir estas instruções para interagir com o programa:
 - **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
 - **dados_predicao**: Lista de listas contendo as variáveis preditoras para gerar as previsões do modelo.
 
+## Descrição dos códigos
+
+### ```model.R```
+
+
+### ```plot.R```
+
+
+### ```prediction.R```
+
+
+### ```treatment.R```
+
+
+### ```config.R```
+
+
+### ```functions_treatment.R```
