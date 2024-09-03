@@ -6,6 +6,7 @@ modelos = "model.R"
 predicao = "prediction.R"
 plot = "plot.R"
 
+# Pastas e arquivos específicos
 arquivo_yaml = "meu_arquivo.yaml"
 pasta_input = "entradas"
 pasta_output = "saidas"
