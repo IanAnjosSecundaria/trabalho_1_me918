@@ -18,8 +18,8 @@ criar_yaml()
 if(conferir_requisicao(pasta_input, arquivo_yaml))
 {
 	#Depois de conferir a requisição
-	#COLOCAR O CÓDIGO DO MODEL.R
-	#COLOCAR O CÓDIGO DO PREDICTION.R
-	#COLOCAR O CÓDIGO DO PLOT.R
+	#COLOCAR FUNÇÃO(ÕES) DO MODEL.R
+	#COLOCAR FUNÇÃO(ÕES) PREDICTION.R
+	#COLOCAR FUNÇÃO(ÕES) CÓDIGO DO PLOT.R
 }
 
