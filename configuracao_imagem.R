@@ -8,9 +8,11 @@ inicializar_configuracoes_programa = function() {
 	  renv::install("yaml")
 	  renv::install("glue")
 	  renv::install("glmnet")
+	  renv::install("assertthat")
+	  renv::install("jsonlite")
 	  renv::snapshot()
 	} else {
 	  message("A pasta 'renv' já existe. Apenas executando a restauração.")
-	 renv::restore()
+	  renv::restore()
 	}
 }
