@@ -2,7 +2,7 @@
 # O código deve tratar o yaml que chega de forma a o 'model.R' conseguir entender a requisição;
 
 # Bibliotecas autorais
-source("model.R")
+source("config.R")
 source(funcoes_tratamento)
 
 # Lógica:

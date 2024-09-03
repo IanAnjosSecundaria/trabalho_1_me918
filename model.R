@@ -4,7 +4,6 @@ library(glmnet)
 
 # Bibliotecas autorais:
 source("config.R")
-source(modelos)
 
 # Uma vez tendo o yaml definido, treina o modelo
 chamar_modelo = function() {

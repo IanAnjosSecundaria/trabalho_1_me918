@@ -10,8 +10,8 @@ source(plot)
 
 
 # Tratamento principal:
-criar_pasta()
-criar_yaml()
+criar_pasta(pasta_input)
+criar_pasta(pasta_output)
 
 
 # Após o usuário modificar o yaml:
