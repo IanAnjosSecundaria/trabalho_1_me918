@@ -20,7 +20,9 @@ if(conferir_requisicao(pasta_input, arquivo_yaml))
 	config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
 	
 	#Depois de conferir a requisição
-	#COLOCAR FUNÇÃO(ÕES) DO MODEL.R
+	modelo = chamar_modelo(config)
+	salvar_modelo(modelo)
+	rodar_predicao()
 	#COLOCAR FUNÇÃO(ÕES) PREDICTION.R
 	#COLOCAR FUNÇÃO(ÕES) CÓDIGO DO PLOT.R
 }
