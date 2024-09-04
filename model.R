@@ -6,7 +6,7 @@ library(assertthat)
 source("config.R")
 
 # Uma vez tendo o yaml definido, treina o modelo
-chamar_modelo = function() {
+chamar_modelo = function(config) {
   
   dados = read.csv(config$bd)
   

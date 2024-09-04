@@ -17,6 +17,8 @@ criar_pasta(pasta_output)
 # Após o usuário modificar o yaml:
 if(conferir_requisicao(pasta_input, arquivo_yaml))
 {
+	config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
+	
 	#Depois de conferir a requisição
 	#COLOCAR FUNÇÃO(ÕES) DO MODEL.R
 	#COLOCAR FUNÇÃO(ÕES) PREDICTION.R
