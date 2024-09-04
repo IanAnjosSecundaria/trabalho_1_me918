@@ -25,6 +25,14 @@ Pastas de Iterações:
 - entrada;
 - saida.
 
+A lógica do repositório pode ser visto logo abaixo:
+
+![Grafo de Lógica](imagens_instrucoes/grafo_organizacao.png)
+
+A organização do repositório pode ser visto logo abaixo:
+
+![Grafo de Organização](imagens_instrucoes/grafo_organizacao.png)
+
 ## Variáveis no Arquivo YAML
 
 As variáveis no arquivo YAML incluem:
@@ -35,6 +43,7 @@ As variáveis no arquivo YAML incluem:
 - **var_resposta**: String que indica o nome da coluna que contém a variável resposta;
 - **lambda**: Valor numérico (float) utilizado como parâmetro em determinados modelos, como no lasso;
 - **dados_predicao** : Valor/lista de valores numéricos( float) que serão utilizados para fazer a predição.
+
 ## Interação do Usuário com o Programa
 
 O usuário deve seguir estas instruções para interagir com o programa:
@@ -73,7 +82,7 @@ Este é o arquivo principal, responsável pela operação do conjunto de código
 
 ### ```config.R```
 
-Código é responsável pela definição dos nomes de arquivos e pastas utilizados ao longo da execução do programa.
+Este código é responsável pela definição dos nomes de arquivos e pastas utilizados ao longo da execução do programa.
 
 ### ```tratamento.R``` e ```tratamento_funcoes.R```
 
@@ -95,9 +104,14 @@ A seguir estão algumas das funções presentes no código:
 ### ```predicao.R```
 
 Parte do código responsável pela previsão dos modelos, vai gerar um...
-A seguir estão algumas das funções presentes no código:
+A seguir está a função presente no código:
 
+- **rodar_predicao**: Função que roda a predição de acordo com o arquivo *.rms* gerado pelo *treinamento.R*.
 
 ### ```grafico.R```
 
 Parte do código responsável pelo treino de modelos.
+A seguir está a função presente no código:
+
+- **plotar**: Função feita plotar a variável de predição pedida no *.YAML*.
+
