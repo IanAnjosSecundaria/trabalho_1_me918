@@ -1,13 +1,13 @@
 bd: 'Diabetes.csv'
-var_preditoras: 
+var_preditora: 
   - "glufast"
   - "sspg"
 var_resposta: 'glutest'
 dados_predicao:
   - 4.0
   - 19.0
-tipo_modelo: 'lasso'
+tipo_modelo: 'lm'
 lambda: 0.01
 alpha : 1
-plot: 0.0
+plot: 1
 

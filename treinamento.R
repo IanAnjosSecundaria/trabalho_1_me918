@@ -7,19 +7,19 @@ library(assertthat)
 source("config.R")
 
 # Uma vez tendo o yaml definido, treina o modelo
-chamar_modelo = function() {
+chamar_modelo = function(config) {
   
   # Carregar os dados do CSV usando o caminho especificado em config
-  dados = read.csv(config$bd)
+  dados = read.csv(paste0(pasta_input, "/", config$bd))
   
   # Extra????o das vari??veis preditoras como matriz e a vari??vel resposta como vetor
-  X = as.matrix(dados[, config$var_preditoras])
+  X = as.matrix(dados[, config$var_preditora])
   y = dados[[config$var_resposta]]
   
   # Fun????o para ajuste do modelo linear simples ou m??ltiplo
-  modelo_funcao = function(var_preditoras, y, dados) {
+  modelo_funcao = function(var_preditora, y, dados) {
     # Construir a f??rmula com todas as vari??veis preditoras
-    regressao = as.formula(paste(y, "~", paste(var_preditoras, collapse = " + ")))
+    regressao = as.formula(paste(y, "~", paste(var_preditora, collapse = " + ")))
     ajuste = lm(regressao, data = dados)
     return(ajuste)
   }
@@ -31,11 +31,11 @@ chamar_modelo = function() {
               msg = "N??o setou nenhum tipo de modelo. Por favor, defina o tipo de modelo no arquivo YAML.")
   
   if (modelo_usado == 'lm') {
-    modelo = modelo_funcao(config$var_preditoras, config$var_resposta, dados)
+    modelo = modelo_funcao(config$var_preditora, config$var_resposta, dados)
     
   } else if (modelo_usado == 'lasso') {
     # Verifique o n??mero de vari??veis preditoras
-    assert_that(length(config$var_preditoras) >= 2, 
+    assert_that(length(config$var_preditora) >= 2, 
                 msg = "Lasso precisa de pelo menos duas vari??veis preditoras.")
     
     # Pegue os valores de alpha e lambda dos par??metros lasso

@@ -1,9 +1,9 @@
-# Configuração de imagem
-# Caso o usuário já tenha no seu diretório a imagem de configuração, então basta pegar essas configurações da imagem.
+# Configura????o de imagem
+# Caso o usu??rio j?? tenha no seu diret??rio a imagem de configura????o, ent??o basta pegar essas configura????es da imagem.
+install.packages("renv")
 
 inicializar_configuracoes_programa = function() {
 	if (!dir.exists("renv")) {
-	  install.packages("renv")
 	  renv::init()
 	  renv::install("yaml")
 	  renv::install("glue")
@@ -12,7 +12,7 @@ inicializar_configuracoes_programa = function() {
 	  renv::install("jsonlite")
 	  renv::snapshot()
 	} else {
-	  message("A pasta 'renv' já existe. Apenas executando a restauração.")
+	  message("A pasta 'renv' j?? existe. Apenas executando a restaura????o.")
 	  renv::restore()
 	}
 }

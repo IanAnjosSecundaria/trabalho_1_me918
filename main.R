@@ -1,4 +1,4 @@
-# Código principal com a lógica principal de requisição
+# C??digo principal com a l??gica principal de requisi????o
 source("config.R")
 source(virtualizacao)
 inicializar_configuracoes_programa()
@@ -13,17 +13,15 @@ source(plot)
 criar_pasta(pasta_input)
 criar_pasta(pasta_output)
 
-
-# Após o usuário modificar o yaml:
+# Ap??s o usu??rio modificar o yaml:
 if(conferir_requisicao(pasta_input, arquivo_yaml))
 {
 	config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
 	
-	#Depois de conferir a requisição
+	#Depois de conferir a requisi????o
 	modelo = chamar_modelo(config)
 	salvar_modelo(modelo)
 	rodar_predicao()
-	#COLOCAR FUNÇÃO(ÕES) PREDICTION.R
-	#COLOCAR FUNÇÃO(ÕES) CÓDIGO DO PLOT.R
+	plotar(config)
 }
 
