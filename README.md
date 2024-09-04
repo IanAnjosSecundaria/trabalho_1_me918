@@ -12,14 +12,14 @@ Arquivo principal:
 - ```main.R```.
 
 Arquivos de Aplicação:
-- ```model.R```;
-- ```plot.R```;
-- ```prediction.R```;
-- ```treatment.R```;
-- ```config.R```.
+- ```config.R```;
+- ```tratamento.R```;
+- ```treinamento.R```;
+- ```predicao.R```;
+- ```grafico.R```.
 
 Arquivos de Função/Suporte:
-- ```functions_treatment.R```.
+- ```tratamento_funcoes.R```.
 
 Pastas de Iterações:
 - entrada;
@@ -75,7 +75,7 @@ Este é o arquivo principal, responsável pela operação do conjunto de código
 
 Código é responsável pela definição dos nomes de arquivos e pastas utilizados ao longo da execução do programa.
 
-### ```treatment.R``` e ```functions_treatment.R```
+### ```tratamento.R``` e ```tratamento_funcoes.R```
 
 Esta seção do código é responsável pelo tratamento do arquivo de entrada *.YAML* fornecido pelo usuário, bem como pela execução das solicitações de treinamento ou predição do modelo.
 A seguir estão algumas das funções presentes no código:
@@ -84,7 +84,7 @@ A seguir estão algumas das funções presentes no código:
 - **criar_YAML**: Função que gera o arquivo YAML que será utilizado pelo usuário para fazer a requisição;
 - **conferir_requisicao**: Função que verifica se a requisição do usuário está corretamente formatada e se é possível prosseguir com as chamadas das funções subsequentes.
 
-### ```model.R```
+### ```treinamento.R```
 
 Parte do código responsável pelo treino de modelos.
 A seguir estão algumas das funções presentes no código:
@@ -92,8 +92,12 @@ A seguir estão algumas das funções presentes no código:
 - **chamar_modelo**: Função que invoca o modelo e retorna o objeto do modelo ajustado;
 - **salvar_modelo**: Função que salva o modelo ajustado com o nome especificado pelo usuário.
 
-### ```prediction.R```
+### ```predicao.R```
 
-### ```plot.R```
+Parte do código responsável pela previsão dos modelos, vai gerar um...
+A seguir estão algumas das funções presentes no código:
+
+
+### ```grafico.R```
 
 Parte do código responsável pelo treino de modelos.
