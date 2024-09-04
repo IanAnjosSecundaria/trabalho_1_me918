@@ -1,7 +1,7 @@
-#install.packages("yaml") primeira vez ao executar o c??digo para preparar o ambiente
+#install.packages("yaml") primeira vez ao executar o código para preparar o ambiente
 library(yaml)
 
-#Fun????o para criar pastas
+#Função para criar pastas
 criar_pasta = function(pasta) {
 	  if (!dir.exists(pasta)) {
 			dir.create(pasta)
@@ -11,7 +11,7 @@ criar_pasta = function(pasta) {
 	  }
 }
 
-# Fun????es de tratamento
+# Funções de tratamento
 criar_yaml = function() {
 	  criar_yaml = function() {
 	  # Caminho do arquivo
@@ -37,12 +37,12 @@ criar_yaml = function() {
 	}
 }
 
-# Fun????o para conferir se requisi????o ?? v??lida
+# Função para conferir se requisição ?? valida
 conferir_requisicao = function(pasta_input, arquivo_yaml) {
-	  # L?? o arquivo YAML
+	  # Lê o arquivo YAML
 	  requisicao = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
 	  
-	  # Fun????o para validar vari??veis de acordo com o tipo de modelo
+	  # Função para validar vari??veis de acordo com o tipo de modelo
 	  validar_modelo <- function(requisicao) {
 			tipo_modelo <- requisicao$tipo_modelo
 			

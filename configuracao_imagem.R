@@ -1,5 +1,5 @@
-# Configura????o de imagem
-# Caso o usu??rio j?? tenha no seu diret??rio a imagem de configura????o, ent??o basta pegar essas configura????es da imagem.
+# Configuração de imagem
+# Caso o usuário já tenha no seu diret??rio a imagem de configura????o, ent??o basta pegar essas configuraçães da imagem.
 install.packages("renv")
 
 inicializar_configuracoes_programa = function() {
@@ -12,7 +12,7 @@ inicializar_configuracoes_programa = function() {
 	  renv::install("jsonlite")
 	  renv::snapshot()
 	} else {
-	  message("A pasta 'renv' j?? existe. Apenas executando a restaura????o.")
+	  message("A pasta 'renv' já existe. Apenas executando a restaura????o.")
 	  renv::restore()
 	}
 }

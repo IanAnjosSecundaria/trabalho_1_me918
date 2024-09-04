@@ -5,14 +5,9 @@
 source("config.R")
 source(funcoes_tratamento)
 
-# Lógica:
-pastas <- c("entradas", "saidas")
+# Lógica
+pastas = c("entradas", "saidas")
 lapply(pastas, criar_pasta)
 criar_yaml()
-
-#Tenho que conferir o length(readRDS("saidas/modelo.rds")) é igual ao length da lista dados_predicao, se sim ele preve, caso contrário ele não preve
-
-
-#Também tenho que conferir o que será retornado no plot
 
 

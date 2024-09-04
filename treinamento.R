@@ -12,13 +12,13 @@ chamar_modelo = function(config) {
   # Carregar os dados do CSV usando o caminho especificado em config
   dados = read.csv(paste0(pasta_input, "/", config$bd))
   
-  # Extra????o das vari??veis preditoras como matriz e a vari??vel resposta como vetor
+  # Extração das variaveis preditoras como matriz e a variável resposta como vetor
   X = as.matrix(dados[, config$var_preditora])
   y = dados[[config$var_resposta]]
   
-  # Fun????o para ajuste do modelo linear simples ou m??ltiplo
+  # Função para ajuste do modelo linear simples ou m??ltiplo
   modelo_funcao = function(var_preditora, y, dados) {
-    # Construir a f??rmula com todas as vari??veis preditoras
+    # Construir a fórmula com todas as vari??veis preditoras
     regressao = as.formula(paste(y, "~", paste(var_preditora, collapse = " + ")))
     ajuste = lm(regressao, data = dados)
     return(ajuste)
@@ -34,7 +34,7 @@ chamar_modelo = function(config) {
     modelo = modelo_funcao(config$var_preditora, config$var_resposta, dados)
     
   } else if (modelo_usado == 'lasso') {
-    # Verifique o n??mero de vari??veis preditoras
+    # Verifique o número de variavéis preditoras
     assert_that(length(config$var_preditora) >= 2, 
                 msg = "Lasso precisa de pelo menos duas vari??veis preditoras.")
     
@@ -42,7 +42,7 @@ chamar_modelo = function(config) {
     alpha = config$alpha
     lambda = config$lambda
     
-    # Verifique se alpha e lambda s??o v??lidos
+    # Verifique se alpha e lambda são válidos
     assert_that(!is.null(alpha), msg = "Valor de alpha n??o foi definido.")
     assert_that(!is.null(lambda), msg = "Valor de lambda n??o foi definido.")
     
@@ -57,9 +57,9 @@ chamar_modelo = function(config) {
   return(list(modelo = modelo, tipo = modelo_usado))
 }
 
-# Fun????o para salvar o modelo
+# Função para salvar o modelo
 salvar_modelo = function(modelo_obj) { 
-  # Verificar se a pasta de sa??da existe
+  # Verificar se a pasta de saída existe
   if (!dir.exists(pasta_output)) {
     dir.create(pasta_output, recursive = TRUE)
   }
@@ -70,6 +70,6 @@ salvar_modelo = function(modelo_obj) {
   # Salvar o modelo em um arquivo .rds
   saveRDS(modelo_obj, nome_modelo)
   
-  # Imprimir mensagem de confirma????o
+  # Imprimir mensagem de confirmação
   print(paste0("Modelo salvo em ", nome_modelo))
 }
