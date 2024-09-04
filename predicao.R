@@ -5,54 +5,57 @@ library(assertthat)
 # Bibliotecas autorais:
 source("config.R")
 
-# Uma vez tendo o yaml definido, treina o modelo
-chamar_modelo = function(config) {
+
+rodar_predicao <- function() {
+  # Caminho para o modelo salvo
+  nome_modelo = paste0(pasta_output, "//modelo_", config$tipo_modelo, ".rds")
   
-  dados = read.csv(config$bd)
+  # Carrega o modelo salvo
+  modelo_obj = readRDS(nome_modelo)
   
-  X = as.matrix(dados[, config$var_preditoras])
-  y = dados[[config$var_resposta]]
-  
-  modelo_funcao = function(x, y, dados) {
-    regressao = paste0(y, "~", x)
-    ajuste = lm(as.formula(regressao), data = dados)
-    return(list(beta0 = ajuste$coef[1], beta1 = ajuste$coef[2]))
-  }
-  
-  modelo_usado = config$tipo_modelo
-  
-  # Verifique se o tipo de modelo foi definido
-  assert_that(!is.null(modelo_usado) && modelo_usado != "", 
-              msg = "Não setou nenhum tipo de modelo. Por favor, defina o tipo de modelo no arquivo YAML.")
-  
-  if (modelo_usado == 'lm') {
-    modelo = modelo_funcao(config$var_preditoras, config$var_resposta, dados)
-  } else if (modelo_usado == 'lasso') {
-    # Verifique o número de variáveis preditoras
-    assert_that(length(config$var_preditoras) >= 2, 
-                msg = "Lasso precisa de pelo menos duas variáveis preditoras.")
-    
-    modelo = glmnet(X, y, alpha = config$alpha,
-                    lambda = config$lasso_params$lambda)
+  # Verifica se o modelo est?? em uma lista e extrai o modelo
+  if (is.list(modelo_obj) && !is.null(modelo_obj$modelo)) {
+    modelo = modelo_obj$modelo
   } else {
-    stop(paste("Modelo", modelo_usado, "não é reconhecido. Use 'lm' ou 'lasso'."))
+    modelo = modelo_obj
   }
   
-  # Retornar uma lista com o modelo e o tipo de modelo
-  return(list(modelo = modelo, tipo = modelo_usado))
+  # Novos dados para predi????o
+  novos_dados = config$dados_predicao
+  
+  # Inicializa um vetor para armazenar as previs??es
+  preds = c()
+  
+  if (config$tipo_modelo == 'lm') {
+    # Extrai os coeficientes do modelo
+    betas = unlist(modelo$coefficients)
+    
+    # Converte a lista de novos_dados em uma matriz
+    X_new = t(do.call(rbind, lapply(novos_dados, as.numeric)))
+    
+    # Adiciona uma coluna de 1's para o intercepto, se necess??rio
+    X_new = cbind(1, X_new)
+    
+    # Calcula as previs??es multiplicando a matriz de preditores por beta
+    preds = X_new %*% betas
+    
+  } else if (config$tipo_modelo == 'lasso') {
+    
+    # Converte 'dados_predicao' em uma matriz
+    X_new = matrix(unlist(novos_dados), nrow = 1)
+    
+    # Verifica se a quantidade de vari??veis corresponde ao modelo
+    if (ncol(X_new) != nrow(modelo$beta)) {
+      stop("O n??mero de preditores nos novos dados n??o corresponde ao modelo Lasso treinado.")
+    }
+    
+    # Fazer previs??es usando o modelo Lasso
+    preds = predict(modelo, newx = X_new, s = config$lambda)
+  }
+  # Salva as previs??es em um arquivo JSON
+  write_json(as.numeric(preds), "saidas//predicoes.json")
+  
+  return(preds)
+
 }
 
-# Função para salvar o modelo
-salvar_modelo = function(modelo_obj) { 
-  # Gerar o nome do arquivo baseado no tipo de modelo
-  nome_modelo = paste0(pasta_output, "/modelo_", config$tipo_modelo, ".rds")
-  
-  # Salvar o modelo em um arquivo .rds
-  saveRDS(modelo_obj, nome_modelo)
-  
-  # Imprimir mensagem de confirmação
-  print(paste0("Modelo salvo em ", nome_modelo))
-}
-
-config = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
-chamar_modelo(config)
