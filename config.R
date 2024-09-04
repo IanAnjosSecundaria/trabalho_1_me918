@@ -1,10 +1,10 @@
 # Configurações de código
 virtualizacao = "configuracao_imagem.R"
-tratamento = "treatment.R"
-funcoes_tratamento = "treatment_functions.R"
-modelos = "model.R"
-predicao = "prediction.R"
-plot = "plot.R"
+tratamento = "tratamento.R"
+funcoes_tratamento = "tratamento_funcoes.R"
+modelos = "treinamento.R"
+predicao = "predicao.R"
+plot = "grafico.R"
 
 # Pastas e arquivos específicos
 arquivo_yaml = "meu_arquivo.yaml"
