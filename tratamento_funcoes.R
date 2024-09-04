@@ -13,17 +13,28 @@ criar_pasta = function(pasta) {
 
 # Funções de tratamento
 criar_yaml = function() {
-	  dados = list(
-			bd = "banco de dados", #string
-			var_preditoras = "x", #string
-			var_respostas = "y", #string
-			dados_predicao = list(4, 19), #lista de listas
-			tipo_modelo = "modelo", #string
-			lambda = 0.01, #float
-			plot = 0
-	  )
-	  yaml_string = as.yaml(dados)
-	  write(yaml_string, file = "entradas/meu_arquivo.yaml")
+	  criar_yaml = function() {
+	  # Caminho do arquivo
+	  caminho_arquivo = "entradas/meu_arquivo.yaml"
+	  
+	  # Verifica se o arquivo já existe
+	  if (!file.exists(caminho_arquivo)) {
+		dados = list(
+		  bd = "banco de dados", # string
+		  var_preditoras = "x", # string
+		  var_respostas = "y", # string
+		  dados_predicao = list(4, 19), # lista de listas
+		  tipo_modelo = "modelo", # string
+		  lambda = 0.01, # float
+		  plot = 0
+		)
+		yaml_string = as.yaml(dados)
+		write(yaml_string, file = caminho_arquivo)
+		cat("Arquivo YAML criado com sucesso.\n")
+	  } else {
+		cat("O arquivo YAML já existe.\n")
+	  }
+	}
 }
 
 # Função para conferir se requisição é válida
