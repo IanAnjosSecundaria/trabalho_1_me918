@@ -1,4 +1,4 @@
-bd: 'entradas//Diabetes.csv'
+bd: 'Diabetes.csv'
 var_preditoras: 
   - "glufast"
   - "sspg"
