@@ -46,14 +46,16 @@ As variáveis no arquivo YAML incluem:
 - **var_preditora**: Lista de strings, onde cada item representa o nome de uma coluna que será utilizada como variável preditora;
 - **var_resposta**: String que indica o nome da coluna que contém a variável resposta;
 - **lambda**: Valor numérico (float) utilizado como parâmetro em determinados modelos, como no lasso;
-- **dados_predicao** : Valor/lista de valores numéricos( float) que serão utilizados para fazer a predição.
+- **dados_predicao** : Valor/lista de valores numéricos (float) que serão utilizados para fazer a predição.
 
 ## Interação do Usuário com o Programa
 
 O usuário deve seguir estas instruções para interagir com o programa:
 
 1. Na pasta *entrada*, coloque o arquivo *.csv* contendo os dados. A primeira linha do arquivo deve conter os nomes das colunas;
-2. No arquivo *usuario.YAML*, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
+2. No arquivo *meu_arquivo.YAML* que já é gerado para o usuário automaticamente, configure os parâmetros necessários para o funcionamento do programa, de acordo com o modelo selecionado.
+
+## Parâmetros necessários para cada tipo de modelo
 
 ### **Para regressão linear**
 
@@ -77,6 +79,25 @@ O usuário deve seguir estas instruções para interagir com o programa:
 - **tipo_modelo**: *lasso*;
 - **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
 - **dados_predicao**: Lista de listas contendo as variáveis preditoras para gerar as previsões do modelo.
+
+### Instruções
+
+Deve ser escolhido pelo usuário o modelo junto ao banco de dados e também na mesma "requisição" os *dados_predicao*. Pox exemplo:
+
+```
+bd: 'Diabetes.csv'
+var_preditora: 
+  - "glufast"
+  - "sspg"
+var_resposta: 'glutest'
+dados_predicao:
+  - 4.0
+  - 19.0
+tipo_modelo: 'lm'
+lambda: 0.01
+alpha : 1
+plot: 1
+```
 
 ## Descrição dos códigos
 
@@ -107,7 +128,7 @@ A seguir estão algumas das funções presentes no código:
 
 ### ```predicao.R```
 
-Parte do código responsável pela previsão dos modelos, vai gerar um...
+Parte do código responsável pela previsão dos modelos, vai gerar um arquivo *.rds* na pasta de saída.
 A seguir está a função presente no código:
 
 - **rodar_predicao**: Função que roda a predição de acordo com o arquivo *.rds* gerado pelo *treinamento.R* e gera um *.JSON*.
