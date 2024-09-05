@@ -25,9 +25,13 @@ Pastas de Iterações:
 - entrada;
 - saida.
 
-A lógica do repositório pode ser visto logo abaixo:
+A lógica de maneira resumida do repositório pode ser visto logo abaixo:
 
-![Grafo de Lógica](imagens_instrucoes/grafo_logica.png)
+![Grafo de Lógica Resumida](imagens_instrucoes/grafo_logica.png)
+
+A lógica de maneira completa do repositório pode ser visto logo abaixo:
+
+![Grafo de Lógica Resumida](imagens_instrucoes/grafo_logica_completa.png)
 
 A organização do repositório pode ser visto logo abaixo:
 
@@ -55,16 +59,16 @@ O usuário deve seguir estas instruções para interagir com o programa:
 
 - **tipo_modelo**: *lm*;
 - **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
-- **var_preditoras**: Nome de uma ou mais colunas preditoras, representadas como uma lista;
-- **var_respostas**: Nome da coluna que contém a variável resposta, representado como uma string;
+- **var_preditora**: Nome de uma ou mais colunas preditoras, representadas como uma lista;
+- **var_resposta**: Nome da coluna que contém a variável resposta, representado como uma string;
 - **plot**: 0 ou 1. Defina como 1 para gerar um gráfico.
 
 ### **Para regressão lasso**
 
 - **tipo_modelo**: *lasso*;
 - **bd**:  Nome do arquivo *.csv* que será utilizado. Este arquivo deve estar na *pasta* entrada;
-- **var_preditoras**: Nome de 2 ou mais colunas preditoras, representadas como uma lista;
-- **var_respostas**: Nome da coluna que contém a variável resposta, representado como uma string;
+- **var_preditora**: Nome de 2 ou mais colunas preditoras, representadas como uma lista;
+- **var_resposta**: Nome da coluna que contém a variável resposta, representado como uma string;
 - **plot**: 0 ou 1. Defina como 1 para gerar um gráfico;
 - **lambda**: Parâmetro lambda utilizado no modelo *lasso*.
 
@@ -106,12 +110,12 @@ A seguir estão algumas das funções presentes no código:
 Parte do código responsável pela previsão dos modelos, vai gerar um...
 A seguir está a função presente no código:
 
-- **rodar_predicao**: Função que roda a predição de acordo com o arquivo *.rms* gerado pelo *treinamento.R*.
+- **rodar_predicao**: Função que roda a predição de acordo com o arquivo *.rds* gerado pelo *treinamento.R* e gera um *.JSON*.
 
 ### ```grafico.R```
 
 Parte do código responsável pelo treino de modelos.
 A seguir está a função presente no código:
 
-- **plotar**: Função feita plotar a variável de predição pedida no *.YAML*.
+- **plotar**: Função feita para gerar um gráfico em *.PNG* plotar a variável de predição descrita pelo *.YAML* em conjunto do *.JSON* gerado na *predicao.R*.
 

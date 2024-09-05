@@ -15,7 +15,7 @@ plotar = function(config) {
     df_plot = data.frame(Previsto = unlist(valores_previstos), Real = valores_reais)
     
     # Gráfico Real vs Previsto
-    ggplot(df_plot, aes(x = Previsto, y = Real)) +
+    p = ggplot(df_plot, aes(x = Previsto, y = Real)) +
       geom_jitter(aes(color = "Real"), size = 2) +
       geom_point(aes(x = Previsto, y = Previsto, color = "Previsto"), size = 2) + 
       geom_segment(aes(x = Previsto, y = Previsto, xend = Previsto, yend = Real), linetype = "dashed", color = "gray") +
@@ -24,5 +24,8 @@ plotar = function(config) {
       labs(title = "Gr??fico Real vs Previsto", x = "Previsto", y = "Real") +
       theme_minimal() +
       theme(legend.title = element_blank())
+      
+      # Salva o gráfico
+    ggsave(filename = paste0(pasta_output, "/grafico_real_vs_previsto.png"), plot = p)
   }
 }

@@ -7,7 +7,7 @@ criar_pasta = function(pasta) {
 			dir.create(pasta)
 			message(paste("Pasta", pasta, "criada."))
 	  } else {
-			message(paste("Pasta", pasta, "j?? existe."))
+			message(paste("Pasta", pasta, "já existe."))
 	  }
 }
 
@@ -37,12 +37,12 @@ criar_yaml = function() {
 	}
 }
 
-# Função para conferir se requisição ?? valida
+# Função para conferir se requisição é valida
 conferir_requisicao = function(pasta_input, arquivo_yaml) {
 	  # Lê o arquivo YAML
 	  requisicao = yaml::read_yaml(paste0(pasta_input, "/", arquivo_yaml))
 	  
-	  # Função para validar vari??veis de acordo com o tipo de modelo
+	  # Função para validar variáveis de acordo com o tipo de modelo
 	  validar_modelo <- function(requisicao) {
 			tipo_modelo <- requisicao$tipo_modelo
 			
@@ -56,10 +56,10 @@ conferir_requisicao = function(pasta_input, arquivo_yaml) {
 			 	 stop("Tipo de modelo desconhecido. Use 'lm', 'lasso' ou 'previsao'.")
 			}
 			
-			# Verifica se todos os campos obrigat??rios est??o presentes
+			# Verifica se todos os campos obrigatórios estão presentes
 			for (campo in campos_obrigatorios) {
 				  if (!campo %in% names(requisicao)) {
-						stop(paste("Campo obrigat??rio faltando:", campo))
+						stop(paste("Campo obrigatório faltando:", campo))
 				  }
 			}
 	}
