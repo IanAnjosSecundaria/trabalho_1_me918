@@ -27,7 +27,7 @@ Pastas de Iterações:
 
 A lógica do repositório pode ser visto logo abaixo:
 
-![Grafo de Lógica](imagens_instrucoes/grafo_organizacao.png)
+![Grafo de Lógica](imagens_instrucoes/grafo_logica.png)
 
 A organização do repositório pode ser visto logo abaixo:
 
