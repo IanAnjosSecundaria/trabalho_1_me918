@@ -31,7 +31,7 @@ A lógica de maneira resumida do repositório pode ser visto logo abaixo:
 
 A lógica de maneira completa do repositório pode ser visto logo abaixo:
 
-![Grafo de Lógica Resumida](imagens_instrucoes/grafo_logica_completa.png)
+![Grafo de Lógica completa](imagens_instrucoes/grafico_logica_completa.png)
 
 A organização do repositório pode ser visto logo abaixo:
 
